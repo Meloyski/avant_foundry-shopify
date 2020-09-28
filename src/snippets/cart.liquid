@@ -1,0 +1,78 @@
+<div class="cart lp--wrapper">
+<div class="ads-container">
+{% if cart.item_count > 0 %}
+  <h1 style="width: 100%">Cart</h1>
+
+  <form action="/cart" method="post" novalidate style="width: 100%">
+
+    {% for item in cart.items %}
+        <div class="product">
+            <div class="product--name" style="display: flex; flex-wrap: wrap:">
+                <h2>
+                    {% for itemCollection in item.product.collections %}
+                        {{ itemCollection.title }}
+                    {% endfor %}
+                </h2>
+                <div>
+                <a href="/">
+                    {{ item.product.title }} — 
+                    {% if item.original_line_price != item.line_price %}
+                        <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                            ${{ item.price | money }}
+                        <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                        <s>${{ item.original_price | money }}</s>
+                    {% else %}
+                        ${{ item.price | money }}
+                    {% endif %}
+                </a>
+                </div>
+            </div>
+            <div class="product--price" style="display: flex; align-items: center;">
+                <div class="product--price-update">
+                    <span class="total">${{ item.line_price | money }}</span>
+                    <span>
+                        Licenses: 
+                        <input type="number" class="cart__quantity-selector" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" aria-label="{{ 'cart.label.quantity' | t }}">
+                    <span>
+                </div>
+                <div class="product-price-remove">
+                    <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                        <small>{{ 'cart.general.remove' | t }}</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+        <div class="checkout" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            <button type="submit" name="update" class="button btn btn--secondary update-cart">{{ 'cart.general.update' | t }}</button>
+            <div>
+                <p>Total:</p>
+                <p class="total">${{ cart.total_price | money }}</p>
+            </div>
+        </div>
+        <button type="submit" name="checkout" class="button full contained" value="CHECKOUT" >Check out*</button>
+        <p class="disclaimer">* By checking out you are agreeing to our <a href="/pages/desktop-license">Desktop</a> and/or <a href="/pages/web-font-license">Webfont EULA</a>.</p>
+    </form>
+    {% else %}
+
+    {% comment %}
+    Cart empty state
+    {% endcomment %}
+    <div class="supports-cookies">
+        <h1>Cart</h1>
+        <p>Your shopping cart is empty, browse the Avant Sans options <a href="/#AvantSansPurchase">here</a>.</p>
+    </div>
+
+    {% comment %}
+    Cart no cookies state
+    ---------------------
+    Browser cookies are required to use the cart. If cookies aren't enabled in the
+    browser a message is displayed prompting the user to enable them.
+    {% endcomment %}
+    <div class="supports-no-cookies">
+        <p>{{ 'cart.general.cookies_required' | t }}</p>
+    </div>
+    {% endif %}
+</div>
+</div>

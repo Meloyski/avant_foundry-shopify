@@ -1,0 +1,74 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available in the "Featured Collection" section in the theme editor.
+
+  Theme Store required settings
+  - Collection
+
+  Theme Store optional settings
+  - Heading: title of the featured collection section
+{%- endcomment -%}
+<section data-section-id="{{ section.id }}" data-section-type="product" id="AvantSansPurchase">
+  {% comment %} {% if section.settings.title != blank %}
+    <h2 class="featured-collection__title">{{ section.settings.title | escape }}</h2>
+  {% endif %} {% endcomment %}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+
+  <div class="featured-products">
+    <div class="ads-container featured-description" style="max-width: 600px;">
+      {{collection.description}}
+    </div>
+
+    <div class="ads-container" style="max-width: 1200px">
+      {% for product in collection.products limit: 3 %}
+        <div class="ads-grid ads-grid-4">
+          <div class="product--card">
+            <div class="product--pricing">
+              <h2><span>$</span>{{product.price_min | money }}</h2>
+              {% comment %} <h3 id="ComparePrice" class="product-single__price--compare-at"><span>$</span>{{ product.compare_at_price | money }}</h3> {% endcomment %}
+              {% comment %} <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span> {% endcomment %}
+            </div>
+            <h1>{{product.title}}</h1>
+            <form method="post" action="/cart/add">
+              <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <input type="submit" value="Add to cart" class="button contained full" />
+            </form>
+            {{product.description}}
+          </div>
+        </div>
+      {% endfor %}
+      <div class="ads-container notice" style="max-width: 600px">
+        <p>Currently, we only have licenses available Desktop and Web. For Application, Publication, and Film use, please contact us for more information.</p>
+      </div>
+    </div>
+  <div>
+
+  
+</section>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

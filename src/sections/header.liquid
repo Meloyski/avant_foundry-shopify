@@ -1,0 +1,123 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available in the "Header" section in the theme editor.
+
+  Theme Store required settings
+  - Show announcement
+  - Text: message to announce
+  - Link: link of the announcement bar
+
+  Theme Store optional settings
+  - Home page only: only shows on the home page
+{%- endcomment -%}
+
+<div class="form-success hide" data-reset-success>
+  {{ 'customer.recover_password.success' | t }}
+</div>
+
+<section data-section-id="{{ section.id }}" data-section-type="header" class="header--wrapper">
+
+  {% comment %} Announcement  {% endcomment %}
+  {%- if section.settings.announcement_bar_enabled -%}
+    <div>
+      {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
+        {%- if section.settings.announcement_bar_link != blank -%}
+          <a href="{{ section.settings.announcement_bar_link }}">
+            {{ section.settings.announcement_bar_text | escape }}
+          </a>
+        {%- else -%}
+          <p>{{ section.settings.announcement_bar_text | escape }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {% comment %} Header  {% endcomment %}
+  <header role="banner" class="site_navigation">
+    <div class="site_navigation--drawer">
+      <div id="navigationToggle" class="site_navigation--drawer-action" onClick="openNavigation()"></div>
+    </div>
+    <div class="site_navigation--logo">
+      <a href="/">
+        {% include 'logo' %}
+      </a>
+    </div>
+    <div class="site_navigation--actions">
+      <a href="/cart" class="site-header__icon site-header__cart">
+        <i class="material-icons">work</i>
+        <div class="site-header__cart-count" data-cart-count-bubble>
+          <span id="CartCount" data-cart-count class="cart-count header-bar__cart-count {% if cart.item_count == 0 %}hide{% endif %}"><span>{{ cart.item_count }}</span></span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  {% comment %} Navigation  {% endcomment %}
+  <div id='navigationDrawer' class="site_drawer draw--navigation hidden">
+      <div class="link--wrapper">
+        <div class="links--list">
+            {% for link in linklists.main-menu.links %}
+              <a href="{{ link.url }}" class="nav--item {% if link.active %}current{% endif %}">{{ link.title }}</a>
+            {% endfor %}
+
+            <div class="links--account">
+              {% if customer %}
+                  {% for link in linklists.accountCustomer.links %}
+                    <a href="{{ link.url }}" class="nav--item {% if link.active %}current{% endif %}">{{ link.title }}</a>
+                  {% endfor %}
+                {% else %}
+                  {% for link in linklists.accountNoCustomer.links %}
+                    <a href="{{ link.url }}" class="nav--item {% if link.active %}current{% endif %}">{{ link.title }}</a>
+                  {% endfor %}
+              {% endif %}
+            </div>
+
+            <div class="links--extras">
+              <div class="nav-copy">
+                Avant Foundry, typefaces and brand assets are designed, produced and owned by <a href="http://meloyski.com" target="_blank">Meloyski</a>.
+              </div>
+              <div class="social-links">
+                {% include 'social' %}
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  {% comment %} Account  {% endcomment %}
+  <div id="cartDrawer" class="site_drawer draw--account hidden">
+    <div class="" style="height: 100px;">
+      <button onClick="openCart()">Close</button>
+    </div>
+    {% include 'cart' %}
+  </div>
+</section>
+
+<script>
+  (function(){
+   var navigationDrawer = document.getElementById('navigationDrawer');
+   var cartDrawer = document.getElementById('cartDrawer');
+
+   if (document.readyState === 'loading') {
+   document.onreadystatechange=function(){
+      if (document.readyState === 'complete') {
+        setTimeout(function(){
+          navigationDrawer.classList.remove('hidden');        
+          cartDrawer.classList.remove('hidden');          
+        }, 100);
+      }
+     };
+   }
+     
+  })();
+
+  function openNavigation() {
+    document.getElementById('navigationDrawer').classList.toggle('open');
+    document.getElementById('navigationToggle').classList.toggle('open');
+  }
+
+  function openCart() {
+    document.getElementById('cartDrawer').classList.toggle('open');
+  }
+</script>
+

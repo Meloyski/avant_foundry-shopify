@@ -1,0 +1,84 @@
+<div class="form-success hide" data-reset-success>
+  {{ 'customer.recover_password.success' | t }}
+</div>
+
+<div class="lp--wrapper login">
+  <div class="ads-container">
+    <div class="login--wrapper " data-login-form>
+      {% form 'customer_login' %}
+        <h1>{{ 'customer.login.title' | t }}</h1>
+        <p style="margin-bottom: 32px;">An Avant Foundry account allows you can keep track of your orders and download your purchases. If you don't have an account, create an account <a href="/account/register">here</a>.</p>
+
+        {{ form.errors | default_errors }}
+
+        <label for="CustomerEmail" class="label-hidden">
+          {{ 'customer.login.email' | t }}
+        </label>
+        <input type="email"
+              name="customer[email]"
+              id="CustomerEmail"
+              class="{% if form.errors contains 'email' %}input-error{% endif %}"
+              placeholder="{{ 'customer.login.email' | t }}"
+              spellcheck="false"
+              autocomplete="off"
+              autocapitalize="off"
+              autofocus>
+
+        {% if form.password_needed %}
+          <label for="CustomerPassword" class="label-hidden">
+            {{ 'customer.login.password' | t }}
+          </label>
+          <input type="password"
+                name="customer[password]"
+                id="CustomerPassword"
+                class="{% if form.errors contains 'password' %}input-error{% endif %}"
+                placeholder="{{ 'customer.login.password' | t }}">
+        {% endif %}
+
+        {% if form.password_needed %}
+          <a href="#recover" data-recover-toggle>{{ 'customer.login.forgot_password' | t }}</a>
+        {% endif %}
+
+        <div class="login--action">
+          <a class="button" href="/account/register">
+            {{ 'layout.customer.create_account' | t }}
+          </a>
+          <input type="submit" class="button contained" value="{{ 'customer.login.sign_in' | t }}">
+        </div>
+      {% endform %}
+
+    </div>
+
+    <div class="login login--wrapper hide" data-recover-form>
+      <h1>{{ 'customer.recover_password.title' | t }}</h1>
+      <p>{{ 'customer.recover_password.subtext' | t }}</p>
+
+      {% form 'recover_customer_password' %}
+        {{ form.errors | default_errors }}
+
+        {% if form.posted_successfully? %}
+          <span class="hide" data-form-state></span>
+        {% endif %}
+
+        <label for="RecoverEmail" class="label-hidden">
+          {{ 'customer.recover_password.email' | t }}
+        </label>
+        <input type="email"
+              name="email"
+              id="RecoverEmail"
+              placeholder="{{ 'customer.recover_password.email' | t }}"
+              spellcheck="false"
+              autocomplete="off"
+              autocapitalize="off">
+
+        <div class="login--action">
+          <button type="button" data-recover-toggle>
+            {{ 'customer.recover_password.cancel' | t }}
+          </button>
+          <input type="submit" class="button contained" value="{{ 'customer.recover_password.submit' | t }}">
+        </div>
+      {% endform %}
+
+    </div>
+  </div>
+</div>

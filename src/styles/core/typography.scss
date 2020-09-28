@@ -1,0 +1,60 @@
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: $font-body;
+  @include font-weight(400);
+  font-size: 16px;
+  color: $color--primary;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+  margin: 0;
+}
+
+h1 {
+  @include font-weight(900);
+}
+
+body,
+input,
+textarea,
+button,
+select {
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+a:focus {
+  color: inherit;
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+a {
+  font-size: inherit;
+  @include font-weight(700);
+  color: $color--blue;
+  transition: .3s color ease-in-out;
+  &:hover {
+    color: rgba($color--blue, .9);
+  }
+}
+
+b {
+  font-size: inherit;
+  @include font-weight(900)
+}

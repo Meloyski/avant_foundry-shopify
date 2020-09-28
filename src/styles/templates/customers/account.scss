@@ -1,0 +1,51 @@
+.account {
+    width: 100%;
+    max-width: 650px;
+    .cart-contains-items {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 42px;
+        .disclaimer {
+            width: 100%;
+        }
+    }
+    h2 {
+        width: 100%;
+        margin-bottom: 24px;
+        @include font-weight(700);
+    }
+}
+
+.ads-table {
+    text-align: left;
+    overflow: auto;
+    &--header {
+        width: 100%;
+        span {
+            @include font-weight(700)
+        }
+    }
+    &--content {
+        width: 100%;
+    }
+    &--row {
+        display: flex;
+        align-items: center;
+        height: 42px;
+        border-bottom: 1px solid rgba($color--primary, .12);
+        .order, .total {
+            width: 100px;
+        }
+
+        .date, .payment, .fulfillment {
+            width: 200px
+        }
+        @media (max-width: 767px) {
+            .payment, .fulfillment {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<footer>
+  <div class="ads-container footer">
+    <div class="ads-grid ads-grid-8 footer-logo">
+      {% include 'avantfoundry-logo-stacked' %}
+    </div>
+    <div class="ads-grid ads-grid-2 footer-links">
+      {% for link in linklists.main-menu.links %}
+        <a href="{{ link.url }}" class="nav--item {% if link.active %}current{% endif %}">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+    <div class="ads-grid ads-grid-2 footer-links">
+      {% if customer %}
+          {% for link in linklists.accountCustomer.links %}
+            <a href="{{ link.url }}" class="nav--item {% if link.active %}current{% endif %}">{{ link.title }}</a>
+          {% endfor %}
+        {% else %}
+          {% for link in linklists.accountNoCustomer.links %}
+            <a href="{{ link.url }}" class="nav--item {% if link.active %}current{% endif %}">{{ link.title }}</a>
+          {% endfor %}
+      {% endif %}
+    </div>
+    <div class="footer-end">
+      <p>© 2020 Avant Foundry — owned, operated, designed by <a href="http://meloyski.com" target="_blank">Meloyski.com</a></p>
+      {% include 'social' %}
+    </div>
+  </div>
+
+  <script>
+    $('.errors').append('<div class="cancel"><div class="cancel--wraper"><i class="material-icons">clear</i></div></div>');
+    $('.cancel--wraper').click(function() {
+        $('.errors').addClass("fade");
+    });
+    $(document).ready(function() {
+      $("table").removeClass('responsive-table');
+      $("tr").removeClass('responsive-table-row');
+  });
+
+  </script>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      
+    ]
+  }
+{% endschema %}

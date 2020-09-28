@@ -1,0 +1,16 @@
+.site-container {
+    background-color: #f7f8f9;
+    &--wrapper {
+        max-width: 1900px;
+        width: 100%;
+        min-height: calc(100vh - 200px);
+        margin: 0 auto;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media(max-width: 500px) {
+            padding: 0 24px;
+        }
+    }
+}

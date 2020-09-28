@@ -1,0 +1,98 @@
+.featured-products {
+    background: rgba($color--blue, .08);
+    padding: 100px 0;
+
+    .featured-description {
+        margin-bottom: 32px;
+        text-align: center;
+        @include font-weight(500);
+    }
+
+    .product--card {
+        background-color: white; 
+        padding: 24px; 
+        box-shadow: 0 24px 48px -24px rgba(0,0,0,.12); 
+        border-radius: 6px;
+
+        .full {
+            margin-bottom: 32px;
+        }
+        
+        h1 {
+            @include font-weight(700);
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 24px;
+            color: rgba($color--primary, .9);
+            position: relative;
+            top: -10px;
+        }
+
+        .product--pricing {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            h2, h3 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            h2 {
+                font-size: 80px;
+                @include font-weight(900);
+                letter-spacing: -3px;
+                span {
+                    @include font-weight(700);
+                    font-size: 32px;
+                }
+                .slash {
+                    color: rgba($color--primary, .6)
+                }
+            }
+            h3 {
+                font-size: 24px;
+                position: relative;
+                top: -5px;
+                @include font-weight(400);
+                color: $color--red;
+                &:after {
+                    content: '';
+                    height: 3px;
+                    width: 60px;
+                    background: $color--red;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(-3deg);
+                }
+                span {
+                    @include font-weight(400);
+                    font-size: 18px;
+                }
+            }
+        }
+
+
+
+        ul {
+            li {
+                display: flex;
+                align-items: center;
+                margin: 2px 0;
+                color: rgba($color--primary, .9);
+                i {
+                    color: $color--green;
+                    margin-right: 8px;
+                }
+                &::before {
+                    content: '';
+                }
+            }
+        }
+    }
+
+    .notice {
+        text-align: center;
+    }
+}

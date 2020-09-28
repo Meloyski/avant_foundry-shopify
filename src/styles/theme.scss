@@ -1,0 +1,218 @@
+@charset 'UTF-8';
+
+/**
+ * [replace with theme name] | Built with Slate
+ */
+@import '~normalize.css/normalize';
+
+// Settings
+@import './variables';
+
+// Grid
+@import './grid.scss';
+
+// Tools
+@import './tools/mixins';
+@import './tools/functions';
+
+// Core
+@import './core/forms';
+@import './core/helpers';
+@import './core/layout';
+@import './core/media';
+@import './core/responsive-tables';
+@import './core/rte';
+@import './core/typography';
+
+// Components
+@import './components/buttons';
+@import './components/hero-banner';
+@import './components/icons';
+@import './components/placeholders';
+@import './components/responsive-images';
+@import './components/address-forms';
+@import './components/input.scss';
+
+// Sections
+@import './sections/blog-posts';
+@import './sections/collection-list';
+@import './sections/featured-collection';
+@import './sections/image-with-text';
+@import './sections/header.scss';
+@import './sections/container.scss';
+@import './sections/hero.scss';
+@import './sections/discovery.scss';
+@import './sections/typefont.scss';
+@import './sections/featured.scss';
+@import './sections/license.scss';
+@import './sections/cart.scss';
+@import './sections/login.scss';
+@import './sections/footer.scss';
+
+// Templates
+@import './templates/gift_card';
+@import './templates/product';
+@import './templates/customers/login.scss';
+@import './templates/customers/account.scss';
+
+@font-face {
+    font-family: "AvantSans";
+    src: url("../assets/fonts/AvantSans-Regular.eot");
+    src: url("../assets/fonts/AvantSans-Regular.eot?#iefix")
+        format("embedded-opentype"),
+        url("../assets/fonts/AvantSans-Regular.woff2") format("woff2"),
+        url("../assets/fonts/AvantSans-Regular.woff") format("woff"),
+        url("../assets/fonts/AvantSans-Regular.ttf") format("truetype"),
+        url("../assets/fonts/AvantSans-Regular.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AvantSansGX";
+    src: url("../assets/fonts/AvantSansGX.woff2") format("woff2-variations");
+    src: url("../assets/fonts/AvantSansGX.woff2") format("woff2");
+    font-weight: 100 900;
+}
+
+body {
+    background-color: white;
+}
+
+// Site Challenge Override
+#challenge, #account, #create-account, #your-shopping-cart, .template-order, .template- {
+    #MainContent {
+        background: rgba($color--blue, .08);
+        margin-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
+.shopify-challenge__container {
+    .shopify-challenge__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        font-size: 18px;
+        padding: 0 32px;
+        color: white;
+        background: rgba($color--blue, 1);
+        width: 100%;
+        border: 0;
+        border-radius: 4px;
+        transition: .3s all ease-in-out;
+        font-family: $font-body;
+        @include font-weight(600);
+        &:hover {
+            background: rgba($color--blue, 0.8);
+            cursor: pointer;
+        }
+    }
+}
+
+// Error
+.errors {
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, 0);
+    left: 50%;
+    margin-top: 40px;
+    background: $color--primary;
+    display: flex;
+    min-height: 64px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    width: 90%;
+    z-index: 9999;
+    color: white;
+    box-shadow: 0 24px 48px rgba(0,0,0,.12);
+    line-height: 1.2;
+    opacity: 1;
+    text-align: left !important;
+    &.fade {
+        transform: translate(-50%, -500px);
+        opacity: 0;
+        transition: .5s all ease-in-out;
+    }
+    ul {
+        padding: 24px 36px;
+        margin: 0;
+        flex-grow: 1;
+        li {
+            list-style: none;
+        }
+    }
+    .cancel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        margin-right: 24px;
+        &--wraper {
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(white, 0);
+            transition: .3s background-color ease-in-out;
+            border-radius: 20px;
+            &:hover {
+                background-color: rgba(white, 0.12);
+                cursor: pointer;
+            }
+            i {
+                color: white;
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+.mobile-hide {
+    @media(max-width: 767px) {
+        display: none;
+    }
+}
+
+.mobile-show {
+    display: none;
+    @media(max-width: 767px) {
+        display: flex;
+    }
+}
+
+.sdd-download-product {
+    @include font-weight(700);
+}
+
+.sdd-download-file {
+    font-size: 18px !important;
+    width: 85%;
+    margin: 0 auto 24px !important;
+}
+
+.sdd-download-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    font-size: 18px !important;
+    padding: 0 32px;
+    color: white;
+    background: rgba($color--blue, 1);
+    border: 0;
+    border-radius: 4px;
+    transition: .3s all ease-in-out;
+    font-family: $font-body;
+    @include font-weight(600);
+    &:hover {
+        background: rgba($color--blue, 0.8);
+        cursor: pointer;
+    }
+}

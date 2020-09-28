@@ -1,0 +1,98 @@
+<div class="try-font" id="AvantSansTry">
+    <div class="ads-container">
+        <div class="details-wrapper">
+            <div class="details">
+                <div style="width: 200px">
+                    <span>Avant Sans</span>
+                    <span>&mdash; Try it out</span>
+                </div>
+                <div class="controls">
+                    <div>
+                        <div class="font-adjust">
+                            <div>
+                                <span>Font Weight:</span><span class="slider-value" id="AvantSansFontWeightValue">700</span>
+                            </div>
+                            <input type="range" min="100" max="900" value="700" id="AvantSansFontWeight" step="1" >
+                        </div>
+                        <div class="font-adjust">
+                            <div>
+                                <span>Font Size:</span><span class="slider-value" id="AvantSansFontSizeValue">100</span>
+                            </div>
+                            <input type="range" min="12" max="200" value="100" id="AvantSansFontSize" step="1" >
+                        </div>
+                        <div class="font-adjust">
+                            <div>
+                                <span>Line Height:</span><span class="slider-value" id="AvantSansLineHeightValue">1.2</span>
+                            </div>
+                            <input type="range" min=".8" max="2" value="1.4" id="AvantSansLineHeight" step=".1" >
+                        </div>
+                        <div class="font-adjust">
+                            <div>
+                                <span>Letter Spacing:</span><span class="slider-value" id="AvantSansLetterSpacingValue">0</span>
+                            </div>
+                            <input type="range" min="-4" max="12" value="0" id="AvantSansLetterSpacing" step="1" >
+                        </div>
+                        {% comment %} <div>
+                            <div id="rates">
+                                <input type="radio" id="r1" name="rate" value="left"> Left
+                                <input type="radio" id="r2" name="rate" value="center" checked="checked"> Center
+                                <input type="radio" id="r3" name="rate" value="right"> Right 
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="textarea" contenteditable="true">Hello, what have we here?</div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        autosize(document.querySelectorAll('#avantsanstry'));
+    }, false);
+</script>
+
+<script>
+    $("#AvantSansFontWeight").on("input change",function () {
+        var value = $(this).val();
+        $('.textarea').css(
+            'font-variation-settings',  `"wght" ${value}`
+        );
+        $('#AvantSansFontWeightValue').text(value);
+    });
+    $("#AvantSansFontSize").on("input change",function () {
+        var value = $(this).val();
+        $('.textarea').css(
+            'font-size',  `${value}px`
+        );
+        $('#AvantSansFontSizeValue').text(value);
+    });
+    $("#AvantSansLineHeight").on("input change",function () {
+        var value = $(this).val();
+        $('.textarea').css(
+            'line-height',  `${value}`
+        );
+        $('#AvantSansLineHeightValue').text(value);
+    });
+    $("#AvantSansLetterSpacing").on("input change",function () {
+        var value = $(this).val();
+        $('.textarea').css(
+            'letter-spacing',  `${value}px`
+        );
+        $('#AvantSansLetterSpacingValue').text(value);
+    });
+
+    // $('input[type=radio]').change(function() {    
+        // if($(this).val() == "left"){   
+           // $('.textarea').css('text-align', 'left');
+       // }
+       // else if($(this).val() == "center"){
+       //     $('.textarea').css('text-align', 'center');
+        //}
+       // else if($(this).val() == "right"){
+          //  $('.textarea').css('text-align', 'right');
+        //}
+    //});
+</script>
+

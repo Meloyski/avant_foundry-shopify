@@ -1,0 +1,50 @@
+.login {
+    .ads-container {
+        justify-content: center;
+        #recover {
+            font-size: 14px;
+        }
+    }
+    h1 {
+        margin-bottom: 24px;
+    }
+    &--action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 18px 0 24px;
+        @media(max-width: 767px) {
+            flex-wrap: wrap;
+            & > * {
+                width: 100%;
+            }
+            .contained {
+                margin-bottom: 16px;
+            }
+            a {
+                order: 2
+            }
+        }
+    }
+}
+
+.account {
+    &--actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 24px;
+        @media(max-width: 767px) {
+            flex-wrap: wrap;
+            & > * {
+                width: 100%;
+            }
+            .contained {
+                margin-bottom: 16px;
+            }
+            a {
+                order: 2
+            }
+        }
+    }
+}

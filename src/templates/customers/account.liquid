@@ -1,0 +1,23 @@
+<div class="lp--wrapper login">
+  <div class="ads-container">
+    <div class="account">
+      <h1>{{ customer.first_name }}'s Account</h1>
+
+      <div class="cart-contains-items">
+        {% if cart.item_count >= 1 %}
+            <a href="/checkout" class="button contained">Continue to checkout*</a>
+            <a href="/cart" class="button">View your cart</a>
+            <p class="disclaimer">* By checking out you are agreeing to our <a href="/pages/desktop-license">Desktop</a> and/or <a href="/pages/web-font-license">Webfont EULA</a>.</p>
+        {% else %}
+            <a href="/" class="button">Return to the store</a>
+        {% endif %}
+      </div>
+
+      <h2>{{ 'customer.orders.title' | t }}</h2>
+
+      {% include 'account-history' %}
+
+      
+    </div>
+  </div>
+</div>

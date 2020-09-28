@@ -1,0 +1,179 @@
+.try-font {
+    background-color: $color--blue;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    min-height: 600px;
+    position: relative;
+    z-index: 9999;
+    .ads-container {
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+    .details-wrapper {
+        width: 100%;
+        @media(max-width: 767px) {
+            .details {
+              flex-wrap: wrap;
+              margin-top: 24px;
+            }
+        }
+    }
+    .details .controls {
+        height: 64px;
+        position: relative;
+        z-index: 99999;
+        & > div {
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: flex-start;
+          @media(max-width: 767px) {
+            margin-bottom: 24px;
+          }
+        }
+        @media(max-width: 767px) {
+            width: 100%;
+            .font-adjust {
+                width: 40%;
+                margin: 0 18px 18px 0 ;
+            }
+        }
+    }
+    .font-adjust {
+        margin: 12px 24px 12px 0;
+        width: 100%;
+        max-width: 140px;
+        input {
+            margin-top: 12px;
+        }
+        .slider-value {
+            @include font-weight(400);
+            margin-left: 6px;
+        }
+    }
+    .textarea {
+        color: white;
+        background: transparent;
+        font-size: 42px;
+        font-family: $font-body;
+        @include font-weight(700);
+        text-align: center;
+        max-height: 90vh;
+        width: 100%;
+        line-height: 1.2;
+        @media(max-width: 767px) {
+            font-size: 42px; 
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.font-adjust {
+    display: flex;
+    flex-wrap: wrap;
+    * {
+        width: 100%;
+    }
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    color: rgba(white, .4);
+    border: none;
+    background: transparent;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: rgba(white, .4);
+  }
+  input[type=range]::-webkit-slider-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -4px;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: rgba(white, .4);
+  }
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: rgba(white, .4);
+  }
+  input[type=range]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    -moz-appearance: none;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    animation: 0.2s;
+    background: rgba(white, .4);
+  }
+  input[type=range]::-ms-fill-lower {
+    border-radius: 4px;
+    background: rgba(white, .4);
+  }
+  input[type=range]::-ms-fill-upper {
+    border-radius: 4px;
+    background: rgba(white, .4);
+  }
+  input[type=range]::-ms-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 10px;
+    background: $color--primary;
+    cursor: pointer;
+    -ms-appearance: none;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: rgba(white, .4)
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: rgba(white, .4)
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: rgba($color--primary, .9);
+    color: white;
+}
+
+.try-buy {
+  color: rgba(white, .8);
+  transition: .3s color ease-in-out;
+  &:hover {
+    color: rgba(white, 1);
+    cursor: pointer;
+  }
+}

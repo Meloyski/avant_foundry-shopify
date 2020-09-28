@@ -1,0 +1,35 @@
+{% paginate customer.orders by 10 %}
+    {% if customer.orders.size != 0 %}
+        <div class="ads-table">
+            <div class="ads-table--header">
+                <div class="ads-table--row">
+                    <span class="order">{{ 'customer.orders.order_number' | t }}</span>
+                    <span class="date">{{ 'customer.orders.date' | t }}</span>
+                    <span class="payment">{{ 'customer.orders.payment_status' | t }}</span>
+                    <span class="fulfillment">{{ 'customer.orders.fulfillment_status' | t }}</span>
+                    <span class="total">{{ 'customer.orders.total' | t }}</span>
+                </div>
+            </div>
+            <div class="ads-table--content">
+                {% for order in customer.orders %}
+                    <div class="ads-table--row">
+                        <span class="order">{{ order.name }}</span>  {% comment %} {{ order.name | link_to: order.customer_url }} {% endcomment %}
+                        <span class="date">{{ order.created_at | date: "%b %d, %Y" }}</span>
+                        <span class="payment">{{ order.financial_status_label }}</span>
+                        <span class="fulfillment">{{ order.fulfillment_status_label }}</span>
+                        <span class="total">${{ order.total_price | money }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>{{ 'customer.orders.none' | t }}</p>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+    {% endif %}
+
+    <p style="margin-top: 32px;">Each license purchased as a download limit of 3. If you are having issues locating your original purchase email with your digital purchase, please <a href="mailto:abc@avantfoundry.com">contact us</a> directly with your order number.<p>
+
+{% endpaginate %}

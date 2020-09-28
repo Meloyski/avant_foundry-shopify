@@ -1,0 +1,23 @@
+<div>
+    <h1 class="testing">{{ section.settings.headline }}</h1>
+</div>
+
+{% schema %}
+  {
+    "name": "Headline",
+    "settings": [
+      {
+        "id": "headline",
+        "type": "text",
+        "label": "Headline",
+        "default": "Hello world"
+      }
+    ],
+    "presets": [
+      {
+        "category": "Text",
+        "name": "Headline"
+      }
+    ]
+  }
+{% endschema %}

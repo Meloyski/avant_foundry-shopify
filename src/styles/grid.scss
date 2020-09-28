@@ -1,0 +1,29 @@
+$width: 8.33%;
+$gutter: 24px;
+$container--padding: 24px;
+
+.ads-container {
+    width: calc(100% - (#{$container--padding} * 2));
+    padding: 0 $container--padding;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    @media(max-width: 767px) {
+        padding: ($container--padding / 1.5);
+    }
+}
+  
+.ads-grid {
+    padding: ($gutter / 2);
+}
+
+@for $item from 1 through 12 {
+    .ads-grid-#{$item} {
+        width: calc(#{$width} * #{$item});
+        @media(max-width: 991px) {
+            @if $item == 12 {
+            } @else {
+            }
+        }
+    }
+}
