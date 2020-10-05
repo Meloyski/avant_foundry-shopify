@@ -55,6 +55,10 @@
 @import './templates/customers/login.scss';
 @import './templates/customers/account.scss';
 
+// Apps
+@import './apps/facebook-messenger.scss';
+
+
 @font-face {
     font-family: "AvantSans";
     src: url("../assets/fonts/AvantSans-Regular.eot");
